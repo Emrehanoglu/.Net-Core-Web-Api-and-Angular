@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Model } from '../Model';
+import { Model, Product } from '../Model';
+import { ProductService } from '../product.service';
 
 @Component({
   selector: 'products',
@@ -8,20 +9,16 @@ import { Model } from '../Model';
 })
 export class ProductsComponent implements OnInit {
 
-  constructor() { }
+  products: Product[];
+  selectedProduct: Product;
+
+  constructor(private productService: ProductService) { }
 
   ngOnInit(): void {
+    this.products = this.productService.getProducts();
   }
 
-  model = new Model();
-
-  //categoryName bilgisini dondurecek bir metot olsun
-  getName(){
-    return this.model.categoryName
+  onSelectedProduct(product: Product){
+    this.selectedProduct = product;
   }
-  //products bilgilerini dondurecek bir metot olsun
-  getProducts(){
-    return this.model.products;
-  }
-
 }
