@@ -15,7 +15,23 @@ export class ProductService {
     return this.model.products;
   }
 
-  addProduct(product: Product){
-    this.model.products.push(product);
+  getProductById(id: number){
+     return this.model.products.find(i => i.id==id);
+  }
+
+  saveProduct(product: Product){
+    //yeni bir ürün ekleyeceksem id bilgisi gelmez otomatik olusur
+    if(product.id == 0){
+      product.id = this.getProducts().length+1
+      //add işlemi
+      this.model.products.push(product);
+    }
+    else{
+      //update işlemi
+      const p = this.getProductById(product.id);
+      p.name = product.name;
+      p.price = product.price;
+      p.isActive = product.isActive;
+    }
   }
 }

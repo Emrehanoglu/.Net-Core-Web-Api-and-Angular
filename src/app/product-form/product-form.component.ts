@@ -18,13 +18,13 @@ export class ProductFormComponent implements OnInit {
   addProduct(name:string,price:number,isactive:boolean)
   {
     const p = new Product(
-      this.productService.getProducts().length+1,
+      0,
       name,
       price,
       isactive
       );
 
-    this.productService.addProduct(p);
+    this.productService.saveProduct(p);
   }
 
 }
