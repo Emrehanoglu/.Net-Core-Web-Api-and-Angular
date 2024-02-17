@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ProductService } from '../product.service';
 import { Product } from '../Model';
 
@@ -9,6 +9,7 @@ import { Product } from '../Model';
 })
 export class ProductFormComponent implements OnInit {
 
+  @Input() products: Product[];
   constructor(private productService: ProductService) { }
 
   ngOnInit(): void {
@@ -24,7 +25,9 @@ export class ProductFormComponent implements OnInit {
       isactive
       );
 
-    this.productService.saveProduct(p);
+    this.productService.addProduct(p).subscribe(product=>{
+      this.products.push(product); //önyüzdeki tabloya da eklemiş oldum
+    });
   }
 
 }

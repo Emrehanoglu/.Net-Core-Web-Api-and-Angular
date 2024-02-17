@@ -21,6 +21,10 @@ export class ProductService {
      return this.model.products.find(i => i.productId==id);
   }
 
+  addProduct(product: Product) : Observable<Product>{
+    return this.http.post<Product>(this.baseUrl + 'api/Products',product);
+  }
+
   saveProduct(product: Product){
     //yeni bir ürün ekleyeceksem id bilgisi gelmez otomatik olusur
     if(product.productId == 0){
