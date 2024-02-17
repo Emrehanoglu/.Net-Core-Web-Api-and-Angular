@@ -34,4 +34,8 @@ export class ProductService {
       p.isActive = product.isActive;
     }
   }
+
+  deleteProduct(product: Product){
+    return this.model.products = this.model.products.filter(x=> x!==product)
+  }
 }
