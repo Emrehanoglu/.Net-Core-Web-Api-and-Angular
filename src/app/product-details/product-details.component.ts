@@ -9,6 +9,7 @@ import { ProductService } from '../product.service';
 })
 export class ProductDetailsComponent implements OnInit {
   @Input() product: Product;
+  @Input() products: Product[];
 
   constructor(private productService: ProductService) { }
 
@@ -24,7 +25,9 @@ export class ProductDetailsComponent implements OnInit {
       isactive
       );
 
-    this.productService.saveProduct(p);
+    this.productService.updateProduct(p).subscribe(product=>{
+      this.products.splice(this.products.findIndex(x=>x.productId==p.productId),1,p)
+    });
     //güncelleme işleminden sonra parametreyi sıfırlayalım ki ekrandan form gitmiş olsun.
     this.product = null;
   }

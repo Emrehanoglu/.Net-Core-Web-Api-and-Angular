@@ -25,6 +25,10 @@ export class ProductService {
     return this.http.post<Product>(this.baseUrl + 'api/Products',product);
   }
 
+  updateProduct(product: Product) : Observable<Product>{
+    return this.http.put<Product>(this.baseUrl + 'api/Products/' + product.productId, product);
+  }
+
   saveProduct(product: Product){
     //yeni bir ürün ekleyeceksem id bilgisi gelmez otomatik olusur
     if(product.productId == 0){
