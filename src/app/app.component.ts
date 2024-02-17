@@ -8,14 +8,4 @@ import { Model } from './Model';
 })
 export class AppComponent {
   title = 'SocialApp';
-  model = new Model();
-
-  //categoryName bilgisini dondurecek bir metot olsun
-  getName(){
-    return this.model.categoryName
-  }
-  //products bilgilerini dondurecek bir metot olsun
-  getProducts(){
-    return this.model.products;
-  }
 }
