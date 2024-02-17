@@ -29,6 +29,10 @@ export class ProductService {
     return this.http.put<Product>(this.baseUrl + 'api/Products/' + product.productId, product);
   }
 
+  deleteProduct(product: Product) : Observable<Product>{
+    return this.http.delete<Product>(this.baseUrl + 'api/Products/' + product.productId);
+  }
+
   saveProduct(product: Product){
     //yeni bir ürün ekleyeceksem id bilgisi gelmez otomatik olusur
     if(product.productId == 0){
@@ -42,9 +46,5 @@ export class ProductService {
       p.price = product.price;
       p.isActive = product.isActive;
     }
-  }
-
-  deleteProduct(product: Product){
-    return this.model.products = this.model.products.filter(x=> x!==product)
   }
 }
