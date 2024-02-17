@@ -1,18 +1,20 @@
 import { Injectable } from '@angular/core';
 import { Model, Product } from './Model';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
-
+  //sorgularımı göndermek istediğim url
+  baseUrl: string = 'http://localhost:5000/';
   model = new Model();
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
-  //products bilgilerini dondurecek bir metot olsun
-  getProducts(){
-    return this.model.products;
+  getProducts(): Observable<Product[]> {
+    return this.http.get<Product[]>(this.baseUrl + 'api/Products');
   }
 
   getProductById(id: number){
@@ -22,7 +24,6 @@ export class ProductService {
   saveProduct(product: Product){
     //yeni bir ürün ekleyeceksem id bilgisi gelmez otomatik olusur
     if(product.id == 0){
-      product.id = this.getProducts().length+1
       //add işlemi
       this.model.products.push(product);
     }
