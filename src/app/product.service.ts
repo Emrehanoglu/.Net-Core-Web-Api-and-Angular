@@ -18,18 +18,18 @@ export class ProductService {
   }
 
   getProductById(id: number){
-     return this.model.products.find(i => i.id==id);
+     return this.model.products.find(i => i.productId==id);
   }
 
   saveProduct(product: Product){
     //yeni bir ürün ekleyeceksem id bilgisi gelmez otomatik olusur
-    if(product.id == 0){
+    if(product.productId == 0){
       //add işlemi
       this.model.products.push(product);
     }
     else{
       //update işlemi
-      const p = this.getProductById(product.id);
+      const p = this.getProductById(product.productId);
       p.name = product.name;
       p.price = product.price;
       p.isActive = product.isActive;
