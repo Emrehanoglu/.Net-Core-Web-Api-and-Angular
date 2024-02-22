@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../_services/auth.service';
 
 @Component({
   selector: 'register',
@@ -9,9 +10,18 @@ export class RegisterComponent implements OnInit {
 
   model: any = {}
 
-  constructor() { }
+  constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
   }
 
+  register(){
+    this.authService.register(this.model).subscribe(
+    next=>{
+      console.log("kullanıcı olusturuldu");
+    }, error => {
+        console.log(error);
+      }
+    );
+  }
 }
