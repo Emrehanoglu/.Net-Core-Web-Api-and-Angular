@@ -8,12 +8,13 @@ import { ProductsComponent } from './products/products.component';
 import { ProductFormComponent } from './product-form/product-form.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { FormsModule } from '@angular/forms';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,  //buraya yeni component gelmiş
-    ProductsComponent, ProductFormComponent, ProductDetailsComponent //buraya yeni component gelmiş
+    ProductsComponent, ProductFormComponent, ProductDetailsComponent, RegisterComponent //buraya yeni component gelmiş
   ],
   imports: [
     BrowserModule,
