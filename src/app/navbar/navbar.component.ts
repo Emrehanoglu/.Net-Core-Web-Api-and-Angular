@@ -25,4 +25,13 @@ export class NavbarComponent implements OnInit {
     )
   }
 
+  loggedIn(){
+    const token = localStorage.getItem("token");
+    return token ? true : false;
+  }
+
+  //logout işlemi için var olan token bilgisini silmem gerekiyor
+  logout(){
+    localStorage.removeItem("token");
+  }
 }
