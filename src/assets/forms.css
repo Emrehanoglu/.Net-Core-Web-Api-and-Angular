@@ -1,0 +1,9 @@
+/* kullanıcı inputa dokundu fakat henuz bir değer girmedi, dolayısıyla suan invalid */
+.form-control.ng-touched.ng-invalid{
+  border-left: 5px solid #a94442;
+}
+
+/* kullanıcı inputa deger girdi ve suan valid */
+.form-control.ng-touched.ng-valid{
+  border-left: 5px solid #42A948;
+}
