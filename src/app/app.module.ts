@@ -9,20 +9,29 @@ import { ProductFormComponent } from './product-form/product-form.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { FormsModule } from '@angular/forms';
 import { RegisterComponent } from './register/register.component';
+import { MemberListComponent } from './member-list/member-list.component';
+import { FriendListComponent } from './friend-list/friend-list.component';
+import { HomeComponent } from './home/home.component';
+import { MessagesComponent } from './messages/messages.component';
+import { NotfoundComponent } from './notfound/notfound.component';
+import { RouterModule } from '@angular/router';
+import { appRoutes } from './routes';
+import { AuthGuard } from './_guards/auth-guard';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,  //buraya yeni component gelmiş
-    ProductsComponent, ProductFormComponent, ProductDetailsComponent, RegisterComponent //buraya yeni component gelmiş
+    ProductsComponent, ProductFormComponent, ProductDetailsComponent, RegisterComponent, MemberListComponent, FriendListComponent, HomeComponent, MessagesComponent, NotfoundComponent //buraya yeni component gelmiş
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    RouterModule.forRoot(appRoutes)
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [
     AppComponent
   ]

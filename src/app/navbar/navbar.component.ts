@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../_services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'navbar',
@@ -10,7 +11,7 @@ export class NavbarComponent implements OnInit {
 
   model: any = {}
 
-  constructor(private authService: AuthService) { }
+  constructor(public authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -18,7 +19,8 @@ export class NavbarComponent implements OnInit {
   login(){
     this.authService.login(this.model).subscribe(
       next => {
-        console.log("login basarılı")
+        console.log("login basarılı");
+        this.router.navigate(['/members']);
       },error => {
         console.log("login hatalı")
       }
@@ -26,12 +28,13 @@ export class NavbarComponent implements OnInit {
   }
 
   loggedIn(){
-    const token = localStorage.getItem("token");
-    return token ? true : false;
+    return this.authService.loggedIn();
   }
 
   //logout işlemi için var olan token bilgisini silmem gerekiyor
   logout(){
     localStorage.removeItem("token");
+    console.log("logout");
+    this.router.navigate(['/home']);
   }
 }
