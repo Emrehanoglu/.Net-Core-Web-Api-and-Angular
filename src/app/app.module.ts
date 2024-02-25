@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -17,6 +17,7 @@ import { NotfoundComponent } from './notfound/notfound.component';
 import { RouterModule } from '@angular/router';
 import { appRoutes } from './routes';
 import { AuthGuard } from './_guards/auth-guard';
+import { ErrorInterceptor } from './_services/error.interceptor';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,11 @@ import { AuthGuard } from './_guards/auth-guard';
     FormsModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [AuthGuard],
+  providers: [AuthGuard, {
+    provide: HTTP_INTERCEPTORS,
+    useClass: ErrorInterceptor,
+    multi: true
+  }],
   bootstrap: [
     AppComponent
   ]

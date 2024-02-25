@@ -22,7 +22,7 @@ export class NavbarComponent implements OnInit {
         console.log("login basarılı");
         this.router.navigate(['/members']);
       },error => {
-        console.log(error.error)
+        console.log(error)
       }
     )
   }
