@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../_services/auth.service';
 import { Router } from '@angular/router';
+import { AlertifyService } from '../_services/alertify.service';
 
 @Component({
   selector: 'navbar',
@@ -11,7 +12,8 @@ export class NavbarComponent implements OnInit {
 
   model: any = {}
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router,
+    private alertify: AlertifyService) { }
 
   ngOnInit(): void {
   }
@@ -19,10 +21,10 @@ export class NavbarComponent implements OnInit {
   login(){
     this.authService.login(this.model).subscribe(
       next => {
-        console.log("login basarılı");
+        this.alertify.success("login basarılı");
         this.router.navigate(['/members']);
       },error => {
-        console.log(error)
+        this.alertify.error(error);
       }
     )
   }
