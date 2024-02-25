@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
-import { JwtHelperService } from "@auth0/angular-jwt";
+// import { JwtHelperService } from "@auth0/angular-jwt";
 
 @Injectable({
   providedIn: 'root'
@@ -9,8 +9,8 @@ import { JwtHelperService } from "@auth0/angular-jwt";
 export class AuthService {
   //sorgularımı göndermek istediğim url
   baseUrl: string = 'http://localhost:5000/api/user/';
-  jwtHelper = new JwtHelperService();
-  decodedToken: any;
+  // jwtHelper = new JwtHelperService();
+  // decodedToken: any;
 
   constructor(private http: HttpClient) { }
 
@@ -32,6 +32,7 @@ export class AuthService {
   //auth guard tarafında kullanılıyor.
   loggedIn(){
     const token = localStorage.getItem("token");
-    return !this.jwtHelper.isTokenExpired(token); //token bilgisinin süresi bitmişse false dönecek
+    return token ? true:false;
+    //return !this.jwtHelper.isTokenExpired(token); //token bilgisinin süresi bitmişse false dönecek
   }
 }

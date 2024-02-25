@@ -11,7 +11,7 @@ export class NavbarComponent implements OnInit {
 
   model: any = {}
 
-  constructor(public authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -22,7 +22,7 @@ export class NavbarComponent implements OnInit {
         console.log("login basarılı");
         this.router.navigate(['/members']);
       },error => {
-        console.log("login hatalı")
+        console.log(error.error)
       }
     )
   }
