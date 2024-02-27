@@ -8,7 +8,7 @@ import { map } from 'rxjs/operators';
 })
 export class AuthService {
   //sorgularımı göndermek istediğim url
-  baseUrl: string = 'http://localhost:5000/api/user/';
+  baseUrl: string = 'http://localhost:5000/api/auth/';
   // jwtHelper = new JwtHelperService();
   // decodedToken: any;
 
