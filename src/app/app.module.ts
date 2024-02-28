@@ -19,12 +19,13 @@ import { appRoutes } from './routes';
 import { AuthGuard } from './_guards/auth-guard';
 import { ErrorInterceptor } from './_services/error.interceptor';
 import { MemberDetailsComponent } from './members/member-details/member-details.component';
+import { PhotoGalleryComponent } from './photo-gallery/photo-gallery.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,  //buraya yeni component gelmiş
-    ProductsComponent, ProductFormComponent, ProductDetailsComponent, RegisterComponent, MemberListComponent, FriendListComponent, HomeComponent, MessagesComponent, NotfoundComponent, MemberDetailsComponent //buraya yeni component gelmiş
+    ProductsComponent, ProductFormComponent, ProductDetailsComponent, RegisterComponent, MemberListComponent, FriendListComponent, HomeComponent, MessagesComponent, NotfoundComponent, MemberDetailsComponent, PhotoGalleryComponent //buraya yeni component gelmiş
   ],
   imports: [
     BrowserModule,
