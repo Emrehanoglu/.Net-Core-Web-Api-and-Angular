@@ -12,5 +12,6 @@ export class User{
   country: string;
   introduction: string;
   hobbies: string;
+  profileImageUrl: string;
   images: Image[];
 }
