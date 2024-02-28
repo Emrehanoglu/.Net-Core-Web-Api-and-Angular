@@ -15,9 +15,16 @@ export class MemberDetailsComponent implements OnInit {
     private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.getUser();
   }
 
   getUser(){
-    this.userService.getUser(this.route.snapshot.params['id'])
+    // + ile id bilgisini integer yapıyorum
+    this.userService.getUser(+this.route.snapshot.params['id'])
+    .subscribe(user=> {
+      this.user = user;
+    }, err => {
+      this.alertify.error(err);
+    })
   }
 }
