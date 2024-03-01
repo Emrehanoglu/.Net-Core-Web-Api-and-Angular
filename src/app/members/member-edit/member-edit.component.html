@@ -15,6 +15,10 @@
                       <p>{{ user?.age }}</p>
                   </div>
                   <div>
+                    <strong>Created Date</strong>
+                    <p>{{ user?.created | date : 'shortDate'}}</p>
+                </div>
+                  <div>
                       <strong>Last Active</strong>
                       <p>{{ user?.lastActive }}</p>
                   </div>
