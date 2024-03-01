@@ -20,12 +20,14 @@ import { AuthGuard } from './_guards/auth-guard';
 import { ErrorInterceptor } from './_services/error.interceptor';
 import { MemberDetailsComponent } from './members/member-details/member-details.component';
 import { PhotoGalleryComponent } from './photo-gallery/photo-gallery.component';
+import { MemberEditComponent } from './members/member-edit/member-edit.component';
+import { MemberEditResolver } from './_resolver/member-edit.resolver';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,  //buraya yeni component gelmiş
-    ProductsComponent, ProductFormComponent, ProductDetailsComponent, RegisterComponent, MemberListComponent, FriendListComponent, HomeComponent, MessagesComponent, NotfoundComponent, MemberDetailsComponent, PhotoGalleryComponent //buraya yeni component gelmiş
+    ProductsComponent, ProductFormComponent, ProductDetailsComponent, RegisterComponent, MemberListComponent, FriendListComponent, HomeComponent, MessagesComponent, NotfoundComponent, MemberDetailsComponent, PhotoGalleryComponent, MemberEditComponent //buraya yeni component gelmiş
   ],
   imports: [
     BrowserModule,
@@ -34,11 +36,16 @@ import { PhotoGalleryComponent } from './photo-gallery/photo-gallery.component';
     FormsModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [AuthGuard, {
+  providers:
+  [
+    AuthGuard,
+    {
     provide: HTTP_INTERCEPTORS,
     useClass: ErrorInterceptor,
     multi: true
-  }],
+    },
+    MemberEditResolver
+  ],
   bootstrap: [
     AppComponent
   ]

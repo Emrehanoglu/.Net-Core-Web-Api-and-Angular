@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
-// import { JwtHelperService } from "@auth0/angular-jwt";
+import { JwtHelperService } from "@auth0/angular-jwt";
 
 @Injectable({
   providedIn: 'root'
@@ -9,8 +9,8 @@ import { map } from 'rxjs/operators';
 export class AuthService {
   //sorgularımı göndermek istediğim url
   baseUrl: string = 'http://localhost:5000/api/auth/';
-  // jwtHelper = new JwtHelperService();
-  // decodedToken: any;
+  jwtHelper = new JwtHelperService();
+  decodedToken: any;
 
   constructor(private http: HttpClient) { }
 
@@ -20,6 +20,8 @@ export class AuthService {
         const result = response;
         if(result){
           localStorage.setItem("token",result.token);
+          this.decodedToken = this.jwtHelper.decodeToken(result.token);
+          console.log(this.decodedToken);
         }
       })
     )
