@@ -12,6 +12,7 @@ import { UserService } from 'src/app/_services/user.service';
 })
 export class MemberDetailsComponent implements OnInit {
   user: User;
+  followText: string = "Follow";
   constructor(private userService: UserService, private alertify: AlertifyService,
     private route: ActivatedRoute, private authService: AuthService) { }
 
@@ -34,6 +35,7 @@ export class MemberDetailsComponent implements OnInit {
     this.userService.followUser(this.authService.decodedToken.nameid, userId)
     .subscribe(result => {
       this.alertify.success(this.user.name + ' kullanıcısını takip ediyorsunuz');
+      this.followText = "Unfollow"
     },err => {
       this.alertify.error(err);
     })
