@@ -29,4 +29,12 @@ export class UserService
   updateUser(id: number, user: User){
     return this.http.put(this.baseUrl + id, user);
   }
+
+  //followerId ---> login olan kullanıcı, takip etmek isteyen kullanıcı
+  //userId     ---> takip edilmek istenen kullanıcı
+  followUser(followerId:number, userId: number){
+    //post requestinde 2. parametre olarak body 'den gelen değer gönderilir,
+    //fakat burada body(input formu yani) 'den bir deger göndermeyeceğim için {} kullandım
+    return this.http.post(this.baseUrl + followerId + "/follow/" + userId, {});
+  }
 }

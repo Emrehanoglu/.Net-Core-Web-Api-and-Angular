@@ -11,6 +11,11 @@ export class ErrorInterceptor implements HttpInterceptor {
 
     return next.handle(req).pipe(catchError((error: HttpErrorResponse) =>{
         if(error.status == 400){
+          //follow işlemindeki durumlar için
+          if(error.error){
+            return throwError(error.error)
+          }
+
           //gelen hata api tarafının validasyonun gelmiş ise
           //kac tane prop 'dan hata gelmişse döngü yardımı ile bunları yazdırdım
           if(error.error.errors){

@@ -1,3 +1,4 @@
+import { AuthService } from './../../_services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { User } from 'src/app/_models/user';
@@ -12,7 +13,7 @@ import { UserService } from 'src/app/_services/user.service';
 export class MemberDetailsComponent implements OnInit {
   user: User;
   constructor(private userService: UserService, private alertify: AlertifyService,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute, private authService: AuthService) { }
 
   ngOnInit(): void {
     this.getUser();
@@ -24,6 +25,16 @@ export class MemberDetailsComponent implements OnInit {
     .subscribe(user=> {
       this.user = user;
     }, err => {
+      this.alertify.error(err);
+    })
+  }
+
+  //login olan kullanıcıya ait token bilgisi içerisindeki id bilgisini authService ile aldım
+  followUser(userId: number){
+    this.userService.followUser(this.authService.decodedToken.nameid, userId)
+    .subscribe(result => {
+      this.alertify.success(this.user.name + ' kullanıcısını takip ediyorsunuz');
+    },err => {
       this.alertify.error(err);
     })
   }
