@@ -21,7 +21,7 @@ export class NavbarComponent implements OnInit {
   login(){
     this.authService.login(this.model).subscribe(
       next => {
-        this.alertify.success("login basarılı");
+        this.alertify.success("login succesfully");
         this.router.navigate(['/members']);
       },error => {
         this.alertify.error(error);
