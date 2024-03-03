@@ -16,13 +16,16 @@ export class RegisterComponent implements OnInit {
     private route: Router) { }
 
   ngOnInit(): void {
+    console.log("register component başladı")
   }
 
   register(){
     console.log(this.model);
+    console.log("register component model geldi")
     this.authService.register(this.model).subscribe(() =>{
       this.alertify.success("kullanıcı olusturuldu");
     }, error => {
+      console.log(error);
         this.alertify.error(error);
       }
     ),() => {

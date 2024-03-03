@@ -36,7 +36,6 @@ export class NavbarComponent implements OnInit {
   //logout işlemi için var olan token bilgisini silmem gerekiyor
   logout(){
     localStorage.removeItem("token");
-    console.log("logout");
     this.router.navigate(['/home']);
   }
 }
